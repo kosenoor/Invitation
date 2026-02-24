@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Royal Wedding Invitation</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Georgia', serif;
+  background: radial-gradient(circle at top, #3b0a45, #120016 70%);
+  overflow-x: hidden;
+  color: gold;
+}
+
+.flower {
+  position: fixed;
+  top: -50px;
+  font-size: 24px;
+  animation: fall linear infinite;
+  opacity: 0.9;
+}
+@keyframes fall {
+  to { transform: translateY(110vh) rotate(360deg); }
+}
+
+.page {
+  position: absolute;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: opacity 1s ease;
+  padding: 20px;
+}
+.hidden { opacity: 0; pointer-events: none; }
+
+h1 { font-size: 3em; text-shadow: 0 0 15px gold; }
+h2 { text-shadow: 0 0 10px gold; }
+h3 {
+  font-family: 'Amiri', serif;
+  direction: rtl;
+  font-size: 3em;
+  text-shadow: 0 0 15px gold;
+}
+
+.btn {
+  margin-top: 10px;
+  padding: 10px 25px;
+  font-size: 16px;
+  border-radius: 30px;
+  border: none;
+  background: linear-gradient(45deg, #c9a227, #ffea70);
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.fullimg {
+  max-width: 92%;
+  max-height: 92%;
+  border-radius: 20px;
+  border: 4px solid gold;
+  cursor: pointer;
+}
+
+.form-box {
+  background: rgba(0,0,0,0.6);
+  padding: 20px;
+  border-radius: 15px;
+  width: 95%;
+  max-width: 500px;
+}
+
+input, select {
+  width: 100%;
+  padding: 8px;
+  margin: 6px 0;
+  border-radius: 8px;
+  border: none;
+}
+
+table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+th, td {
+  border: 1px solid gold;
+  padding: 6px;
+}
+th { background: rgba(255,215,0,0.3); }
+
+.locked { background: rgba(255,0,0,0.3); }
+
+.success {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: green;
+  padding: 10px 20px;
+  border-radius: 10px;
+  display: none;
+  color: white;
+}
+
+.admin-box {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+}
+
+.total-box {
+  margin-top: 15px;
+  font-size: 18px;
+}
+
+.info-msg {
+  margin-top: 5px;
+  font-size: 14px;
+  color: #ffea70;
+}
+</style>
+</head>
+<body>
+
+<audio autoplay loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="success" id="successMsg">Saved Successfully!</div>
+
+<div class="admin-box">
+  <button class="btn" onclick="showAdminLogin()">Admin</button>
+  <button class="btn" id="exportBtn" style="display:none;" onclick="exportToExcel()">Export Excel</button>
+</div>
+
+<script>
+// Falling flowers animation
+for (let i = 0; i < 25; i++) {
+  const f = document.createElement('div');
+  f.className = 'flower';
+  f.innerHTML = '🌸';
+  f.style.left = Math.random() * 100 + 'vw';
+  f.style.animationDuration = (5 + Math.random() * 5) + 's';
+  document.body.appendChild(f);
+}
+
+// Page navigation
+function showPage(num) {
+  document.querySelectorAll('.page').forEach(p => p.classList.add('hidden'));
+  document.getElementById('page' + num).classList.remove('hidden');
+}
+
+// Admin login (password only)
+window.isAdmin = localStorage.getItem('isAdmin') === 'true';
+if(window.isAdmin){
+  document.getElementById("exportBtn").style.display="inline-block";
+}
+
+function showAdminLogin(){
+  const password = prompt("Enter admin password:");
+  if(password === "1234"){
+    window.isAdmin = true;
+    localStorage.setItem('isAdmin', 'true');
+    alert("Admin logged in!");
+    document.getElementById("exportBtn").style.display="inline-block";
+    renderGuestTable(); // refresh table for admin actions
+  } else {
+    alert("Incorrect password");
+  }
+}
+
+function showSuccess(){
+  const msg=document.getElementById("successMsg");
+  msg.style.display="block";
+  setTimeout(()=>{ msg.style.display="none"; },2000);
+}
+
+function checkDate(){
+  const date = document.getElementById("arrival").value;
+  const msg = document.getElementById("dateMessage");
+
+  if(date==="2026-07-08"){
+    msg.innerText="Please select accommodation.";
+  }
+  else if(date==="2026-07-09"){
+    msg.innerText="This is Nikkah day. Please arrive before 10:00 AM. Nikkah at 11:00 AM.";
+  }
+  else{
+    msg.innerText="";
+  }
+}
+</script>
+
+<!-- PAGES -->
+<div id="page1" class="page">
+  <h3>بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</h3>
+  <h1>Wedding Invitation</h1>
+  <h2>Shoaib ❤ Raseena</h2>
+  <button class="btn" onclick="showPage(2)">Invitation</button>
+</div>
+
+<div id="page2" class="page hidden">
+  <h1>Click to Wedding Card Page 1</h1>
+  <img src="cover.jpg" class="fullimg" onclick="showPage(3)">
+</div>
+
+<div id="page3" class="page hidden">
+  <h1>Click to Wedding Card Page 2</h1>
+  <img src="image1.jpg" class="fullimg" onclick="showPage(4)">
+</div>
+
+<div id="page4" class="page hidden">
+  <h1>Click to Registration </h1>
+  <img src="image2.jpg" class="fullimg" onclick="showPage(5)">
+</div>
+
+<div id="page5" class="page hidden">
+  <h1>Wedding Guest Confirmation</h1>
+
+  <div class="form-box">
+    <input type="hidden" id="editKey">
+    <input type="text" id="name" placeholder="Name" required>
+    <input type="number" id="count" placeholder="Number of Attendees" required>
+
+    <input type="date" id="arrival" min="2026-07-08" max="2026-07-09" onchange="checkDate()" required>
+
+    <div id="dateMessage" class="info-msg"></div>
+
+    <select id="accommodation">
+      <option value="Yes">Accommodation Required - Yes</option>
+      <option value="No">Accommodation Required - No</option>
+    </select>
+
+    <select id="transport">
+      <option value="Yes">Own Transport - Yes</option>
+      <option value="No">Own Transport - No</option>
+    </select>
+
+    <select id="finalized">
+      <option value="No">Finalized - No</option>
+      <option value="Yes">Finalized - Yes</option>
+    </select>
+
+    <button class="btn" onclick="saveGuest()">Submit</button>
+  </div>
+
+  <div class="total-box">
+    Total Guests: <span id="totalGuests">0</span>
+  </div>
+
+  <table id="guestTable">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>No</th>
+        <th>Arrival</th>
+        <th>Stay</th>
+        <th>Transport</th>
+        <th>Final</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
+
+<!-- FIREBASE -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getDatabase, ref, push, onValue, update, remove, get } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDPKE-2-5Lsu8jlLC0sY-yeDxaLEYlAr7I",
+  authDomain: "shoaibinvitees.firebaseapp.com",
+  databaseURL: "https://shoaibinvitees-default-rtdb.firebaseio.com",
+  projectId: "shoaibinvitees",
+  storageBucket: "shoaibinvitees.firebasestorage.app",
+  messagingSenderId: "130814551281",
+  appId: "1:130814551281:web:41eebbe37571e2fe06f550",
+  measurementId: "G-Z04S4346YL"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+const guestRef = ref(db,"guests");
+
+window.saveGuest = function(){
+  const nameVal = document.getElementById("name").value.trim();
+  const countVal = document.getElementById("count").value;
+  const arrivalVal = document.getElementById("arrival").value;
+  const accVal = document.getElementById("accommodation").value;
+  const transportVal = document.getElementById("transport").value;
+  const finalVal = document.getElementById("finalized").value;
+  const editKey = document.getElementById("editKey").value;
+
+  if(!nameVal || !countVal || !arrivalVal){
+    alert("Please fill required fields");
+    return;
+  }
+
+  const data = { name:nameVal, count:countVal, arrival:arrivalVal, accommodation:accVal, transport:transportVal, finalized:finalVal };
+
+  if(editKey){
+    update(ref(db,"guests/"+editKey), data);
+  } else {
+    push(guestRef, data);
+  }
+
+  document.getElementById("name").value="";
+  document.getElementById("count").value="";
+  document.getElementById("arrival").value="";
+  document.getElementById("finalized").value="No";
+  document.getElementById("editKey").value="";
+
+  showSuccess();
+};
+
+// Dynamic table render
+function renderGuestTable(){
+  onValue(guestRef,(snapshot)=>{
+    const tbody=document.querySelector("#guestTable tbody");
+    tbody.innerHTML="";
+    let total=0;
+
+    snapshot.forEach(child=>{
+      const g=child.val();
+      const key=child.key;
+      total+=parseInt(g.count||0);
+
+      const row=document.createElement("tr");
+      if(g.finalized==="Yes") row.classList.add("locked");
+
+      let actions = "Locked";
+      if(!g.finalized || g.finalized==="No" || window.isAdmin){
+        actions = `<button onclick="editGuest('${key}')">Edit</button>
+                   <button onclick="deleteGuest('${key}')">Delete</button>`;
+      }
+
+      row.innerHTML=`<td>${g.name}</td>
+                     <td>${g.count}</td>
+                     <td>${g.arrival}</td>
+                     <td>${g.accommodation}</td>
+                     <td>${g.transport}</td>
+                     <td>${g.finalized}</td>
+                     <td>${actions}</td>`;
+      tbody.appendChild(row);
+    });
+
+    document.getElementById("totalGuests").innerText=total;
+  });
+}
+renderGuestTable();
+
+window.editGuest=async function(key){
+  const snapshot=await get(ref(db,"guests/"+key));
+  const g=snapshot.val();
+  document.getElementById("editKey").value=key;
+  document.getElementById("name").value=g.name;
+  document.getElementById("count").value=g.count;
+  document.getElementById("arrival").value=g.arrival;
+  document.getElementById("accommodation").value=g.accommodation;
+  document.getElementById("transport").value=g.transport;
+  document.getElementById("finalized").value=g.finalized;
+  window.scrollTo({top:0,behavior:"smooth"});
+};
+
+window.deleteGuest=function(key){
+  if(confirm("Delete this record?")){
+    remove(ref(db,"guests/"+key));
+  }
+};
+
+window.exportToExcel=function(){
+  let table=document.getElementById("guestTable").outerHTML;
+  let dataType='application/vnd.ms-excel';
+  let a=document.createElement('a');
+  a.href='data:' + dataType + ', ' + encodeURIComponent(table);
+  a.download='Wedding_Guest_List.xls';
+  a.click();
+};
+</script>
+
+</body>
+</html>

@@ -381,11 +381,10 @@ th { background: rgba(255,255,255,0.2); }
 
 
 <!-- NAVIGATION -->
-
+<div class="admin-box">
 <button class="btn"  onclick="showAdminLogin()">Admin</button>
 <button class="btn" onclick="openBook()">Invitation</button>
 <button class="btn" onclick="showPage(5)">Locations</button>
-
 </div>
 
 <!-- PAGE 1 HOME -->
@@ -396,48 +395,603 @@ th { background: rgba(255,255,255,0.2); }
 </div>
 
 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Koothanallur Locations</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Page container */
+.page {
+    padding: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Layout */
+.locations-wrapper {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* CARD */
+.location-box {
+    position: relative;
+    width: 320px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* IMAGE */
+.location-image {
+    width: 100%;
+    display: block;
+    cursor: pointer;
+}
+
+/* VIDEO OVER IMAGE */
+.location-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+    z-index: 2;
+}
+
+/* LABEL */
+.location-label {
+    padding: 10px;
+    background: #fff;
+    font-size: 14px;
+    text-align: center;
+}
+
+.location-label a {
+    color: blue;
+    text-decoration: none;
+}
+
+/* BUTTON */
+.btn {
+    margin-top: 20px;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+</style>
+
+</head>
+
+<body>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Koothanallur Locations</title>
+
+<style>
+body {
+    font-family: Arial;
+}
+
+.page {
+    padding: 20px;
+}
+
+.locations-wrapper {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* CARD */
+.location-box {
+    position: relative;
+    width: 320px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* IMAGE */
+.location-image {
+    width: 100%;
+    display: block;
+    cursor: pointer;
+}
+
+/* VIDEO OVERLAY */
+.location-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+    z-index: 2;
+}
+
+/* LABEL */
+.location-label {
+    padding: 10px;
+    background: #fff;
+    font-size: 14px;
+    text-align: center;
+}
+
+.location-label a {
+    color: blue;
+    text-decoration: none;
+}
+
+.btn {
+    margin-top: 20px;
+    padding: 10px;
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Koothanallur Locations</title>
+
+<style>
+body {
+    font-family: Arial;
+}
+
+.page {
+    padding: 20px;
+}
+
+/* GRID */
+.locations-wrapper {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* CARD */
+.location-box {
+    width: 320px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    background: #fff;
+}
+
+/* MEDIA AREA (IMAGE + VIDEO ONLY) */
+.media-box {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+}
+
+/* IMAGE */
+.location-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+    display: block;
+}
+
+/* VIDEO (same space as image only) */
+.location-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+}
+
+/* LABEL BELOW MEDIA */
+.location-label {
+    padding: 10px;
+    font-size: 14px;
+    text-align: center;
+    border-top: 1px solid #eee;
+}
+
+/* MAP LINK SEPARATE */
+.map-link {
+    display: block;
+    margin-top: 6px;
+    color: blue;
+    text-decoration: none;
+}
+
+/* BUTTON */
+.btn {
+    margin-top: 20px;
+    padding: 10px;
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Koothanallur Locations</title>
+
+<style>
+body {
+    font-family: Arial;
+}
+
+.page {
+    padding: 20px;
+}
+
+.locations-wrapper {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* CARD */
+.location-box {
+    width: 320px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* MEDIA AREA */
+.media-box {
+    position: relative;
+    width: 100%;
+    height: 220px;
+}
+
+/* IMAGE */
+.location-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+/* VIDEO */
+.location-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+}
+
+/* LABEL */
+.location-label {
+    padding: 10px;
+    font-size: 14px;
+    text-align: center;
+    border-top: 1px solid #eee;
+}
+
+/* MAP LINK */
+.map-link {
+    display: block;
+    margin-top: 6px;
+    color: blue;
+    text-decoration: none;
+}
+</style>
+
+
+
+
+
+
 <!-- PAGE 5 -->
 <div id="page5" class="page hidden">
 
-   <h1> Koothanllur Home & Wedding Locations</h1>
+    <h1>Koothanallur Home & Wedding Locations</h1>
+
+    <style>
+
+    /* KEEP YOUR EXISTING PAGE COLORS */
+
+    .locations-wrapper{
+        display:flex;
+        gap:20px;
+        overflow-x:auto;
+        scroll-snap-type:x mandatory;
+        padding-bottom:10px;
+    }
+
+    .location-box{
+        min-width:320px;
+        max-width:320px;
+
+        /* REMOVED WHITE BACKGROUND */
+        /* REMOVED NEW COLOR SCHEME */
+
+        border-radius:18px;
+        overflow:hidden;
+
+        /* KEEP SOFT SHADOW ONLY */
+        box-shadow:0 4px 10px rgba(0,0,0,0.18);
+
+        scroll-snap-align:center;
+    }
+
+    /* MEDIA AREA */
+    .media-box{
+        position:relative;
+        width:100%;
+        height:500px;
+        overflow:hidden;
+    }
+
+    /* IMAGE */
+    .location-image{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        cursor:pointer;
+        display:block;
+    }
+
+    /* VIDEO */
+    .location-video{
+        position:absolute;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        display:none;
+    }
+
+    /* FADE EFFECT */
+    .fade-out{
+        animation:fadeOut 1.2s forwards;
+    }
+
+    @keyframes fadeOut{
+        from{
+            opacity:1;
+        }
+        to{
+            opacity:0;
+        }
+    }
+
+    /* PLAY BUTTON */
+    .play-overlay{
+        position:absolute;
+        top:50%;
+        left:50%;
+        transform:translate(-50%,-50%);
+        width:75px;
+        height:75px;
+
+        /* NO COLOR CHANGE */
+        background:rgba(255,255,255,0.85);
+
+        border-radius:50%;
+
+        display:flex;
+        align-items:center;
+        justify-content:center;
+
+        font-size:30px;
+        cursor:pointer;
+
+        transition:0.3s;
+    }
+
+    .play-overlay:hover{
+        transform:translate(-50%,-50%) scale(1.08);
+    }
+
+    /* LABEL */
+    .location-label{
+        padding:12px;
+        text-align:center;
+
+        /* KEEP EXISTING PAGE COLORS */
+        background:inherit;
+        color:inherit;
+    }
+
+    /* MOBILE */
+    @media(max-width:768px){
+
+        .location-box{
+            min-width:92vw;
+            max-width:92vw;
+        }
+
+        .media-box{
+            height:70vh;
+        }
+    }
+
+    </style>
 
     <div class="locations-wrapper">
 
-        <!-- House Location -->
+        <!-- HOME -->
         <div class="location-box">
-            <img 
-                class="location-image" 
-                src="Home.jpg" 
-                alt="House Location"
-            >
-            <div class="location-label">
-                 Noor Manzil, Mohammedia Street, Koothanallur<br>
-                <a href="https://maps.app.goo.gl/6d7KRL2Vtoir9Pbb9" target="_blank">
-                    View on Google Maps
-                </a>
+
+            <div class="media-box">
+
+                <img
+                    src="Home.jpg"
+                    class="location-image"
+                    id="homeImg"
+                >
+
+                <video
+                    id="homeVideo"
+                    class="location-video"
+                    playsinline
+                >
+                    <source src="Home.mp4" type="video/mp4">
+                </video>
+
+                <div
+                    class="play-overlay"
+                    onclick="playVideo(
+                        'homeVideo',
+                        this,
+                        'https://maps.app.goo.gl/6d7KRL2Vtoir9Pbb9'
+                    )"
+                >
+                    ▶
+                </div>
+
             </div>
+
+            <div class="location-label">
+                Noor Manzil, Mohammedia Street, Koothanallur
+            </div>
+
         </div>
 
-        <!-- Wedding Hall Location-->
+        <!-- HM MAHAL -->
         <div class="location-box">
-            <img 
-                class="location-image" 
-                src="HM.jpg" 
-                alt="Wedding Hall Location"
-            >
-            <div class="location-label">
-                  HM Mahal Lakshmangudi, Koothanallur<br>
-		 <a href="https://maps.app.goo.gl/EiZLyEmWjxMNN5FFA" target="_blank">
-                
-                    View on Google Maps
-                </a>
+
+            <div class="media-box">
+
+                <img
+                    src="HM.jpg"
+                    class="location-image"
+                    id="hmImg"
+                >
+
+                <video
+                    id="hmVideo"
+                    class="location-video"
+                    playsinline
+                >
+                    <source src="HM.mp4" type="video/mp4">
+                </video>
+
+                <div
+                    class="play-overlay"
+                    onclick="playVideo(
+                        'hmVideo',
+                        this,
+                        'https://maps.app.goo.gl/EiZLyEmWjxMNN5FFA'
+                    )"
+                >
+                    ▶
+                </div>
+
             </div>
+
+            <div class="location-label">
+                HM Mahal Lakshmangudi, Koothanallur
+            </div>
+
         </div>
 
     </div>
-<button class="btn" onclick="showPage(1)">Return</button>
+
+    <button class="btn" onclick="showPage(1)">Return</button>
 
 </div>
+
+<script>
+
+function playVideo(videoId, overlay, mapUrl){
+
+    // STOP ALL VIDEOS
+    document.querySelectorAll('.location-video').forEach(v=>{
+        v.pause();
+        v.style.display='none';
+        v.classList.remove('fade-out');
+    });
+
+    // RESET PLAY BUTTONS
+    document.querySelectorAll('.play-overlay').forEach(o=>{
+        o.style.display='flex';
+    });
+
+    const video = document.getElementById(videoId);
+
+    // HIDE PLAY BUTTON
+    overlay.style.display='none';
+
+    // SHOW VIDEO
+    video.style.display='block';
+
+    video.currentTime = 0;
+
+    video.play();
+
+    // VIDEO END
+    video.onended = function(){
+
+        // FADE OUT
+        video.classList.add('fade-out');
+
+        setTimeout(()=>{
+
+            // OPEN MAP
+            window.open(mapUrl, '_blank');
+
+            // RESET
+            video.pause();
+            video.style.display='none';
+            video.classList.remove('fade-out');
+
+            overlay.style.display='flex';
+
+        },1200);
+    };
+}
+
+</script>
+```
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -501,7 +1055,7 @@ th { background: rgba(255,255,255,0.2); }
 
 <div class="pages" id="p1" style="z-index:3;">
 <div class="frame"><img src="cover.jpg"></div>
-<div class="frame back"><img src="cover.jpg"></div>
+<div class="frame back"><img src="image1.jpg"></div>
 <div class="corner" onclick="flipNext(1)">
 Click
 Turn ➤
@@ -512,7 +1066,7 @@ Turn ➤
 
 <div class="pages" id="p2" style="z-index:2;">
 <div class="frame"><img src="image1.jpg"></div>
-<div class="frame back"><img src="image1.jpg"></div>
+<div class="frame back"><img src="image2.jpg"></div>
 
 
 <div class="corner left" onclick="flipPrev(1)">
@@ -740,6 +1294,4 @@ window.exportToExcel=function(){
 </script>
 
 </body>
-
 </html>
-
